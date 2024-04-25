@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 
-function Sidebar() {
+function Sidebar({ addNote }) {
   const [isOpen, setIsOpen] = useState(false);
   const colors = ["#fe9b72", "#fec971", " #00d4fe", "#b693fd", "#e4ee91"];
 
@@ -12,7 +12,7 @@ function Sidebar() {
 
   return (
     <div>
-      <div className="h-screen w-36 flex flex-col gap-10 border border-r-1 rounded-2xl items-center">
+      <div className="h-screen w-36 flex flex-col gap-10 border border-gray-300 border-r rounded-3xl items-center">
         <p className="p-6 font-semibold text-center text-xl">
           WEB <br />
           NOTES
@@ -27,6 +27,7 @@ function Sidebar() {
                 className="bg-red-400 h-6 w-6 rounded-xl  cursor-pointer"
                 key={indx}
                 style={{ backgroundColor: color }}
+                onClick={() => addNote(color)}
               />
             ))}
           </ul>

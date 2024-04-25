@@ -1,9 +1,15 @@
 import React from "react";
 
-function Note() {
+function Note({ key, note }) {
+  console.log("key", key, "   note", note);
+  const bgColor = note?.color;
+  console.log("bgColor", bgColor);
   return (
-    <div className="bg-green-300 rounded-md flex">
-      <p>hi</p>
+    <div
+      style={{ backgroundColor: bgColor }}
+      className="w-64 h-[270px] rounded-2xl p-3"
+    >
+      hello
     </div>
   );
 }
