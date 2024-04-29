@@ -19,8 +19,12 @@ function Dashboard() {
 
   return (
     <div className="flex">
-      <Sidebar addNote={addNote} />
-      <NoteView notes={notes} />
+      <div className="fixed h-screen w-36">
+        <Sidebar addNote={addNote} />
+      </div>
+      <div className="ml-36 overflow-y-auto">
+        <NoteView notes={notes} />
+      </div>
     </div>
   );
 }

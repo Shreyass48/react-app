@@ -12,7 +12,7 @@ function Sidebar({ addNote }) {
 
   return (
     <div>
-      <div className="h-screen w-36 flex flex-col gap-10 border border-gray-300 border-r rounded-3xl items-center">
+      <div className="h-screen w-36 flex flex-col gap-10  border-gray-300 border-r rounded-3xl items-center">
         <p className="p-6 font-semibold text-center text-xl">
           WEB <br />
           NOTES
