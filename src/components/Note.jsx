@@ -1,10 +1,12 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
+import { useState } from "react";
 
 function Note({ note, deleteNote }) {
-  console.log("key", note.id, "   note", note);
+  const [isStarred, setIsStarred] = useState(false);
   const bgColor = note?.color;
-  console.log("bgColor", bgColor);
   return (
     <>
       <div
@@ -31,14 +33,33 @@ function Note({ note, deleteNote }) {
               })}
             </div>
           </div>
+          <div className="flex gap-1">
+            {isStarred ? (
+              <button
+                onClick={() => {
+                  setIsStarred(!isStarred);
+                }}
+              >
+                <AiFillStar size={25} color={"yellow"} />
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setIsStarred(!isStarred);
+                }}
+              >
+                <AiOutlineStar size={25} />
+              </button>
+            )}
 
-          <button
-            onClick={() => {
-              deleteNote(note?.id);
-            }}
-          >
-            <MdDelete size={25} />
-          </button>
+            <button
+              onClick={() => {
+                deleteNote(note?.id);
+              }}
+            >
+              <MdDelete size={25} />
+            </button>
+          </div>
         </div>
       </div>
     </>
