@@ -16,6 +16,15 @@ function Dashboard() {
     });
     setNotes(newNote);
   };
+  const deleteNote = (id) => {
+    const tempNotes = [...notes];
+
+    const index = tempNotes.findIndex((item) => item.id === id);
+    if (index < 0) return;
+
+    tempNotes.splice(index, 1);
+    setNotes(tempNotes);
+  };
 
   return (
     <div className="flex">
@@ -23,7 +32,7 @@ function Dashboard() {
         <Sidebar addNote={addNote} />
       </div>
       <div className="ml-36 overflow-y-auto">
-        <NoteView notes={notes} />
+        <NoteView notes={notes} deleteNote={deleteNote} />
       </div>
     </div>
   );
