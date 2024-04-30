@@ -1,12 +1,16 @@
 import React from "react";
-import { MdDelete } from "react-icons/md";
+import { AiOutlineDelete } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
+import { VscSave } from "react-icons/vsc";
 import { useState } from "react";
 
-function Note({ note, deleteNote }) {
+function Note({ note, deleteNote, updateNote }) {
   const [isStarred, setIsStarred] = useState(false);
+  const [data, setData] = useState(note?.text || "");
+  const [saveVisible, setSaveVisible] = useState(false);
   const bgColor = note?.color;
+
   return (
     <>
       <div
@@ -14,7 +18,12 @@ function Note({ note, deleteNote }) {
         className="w-64 h-[270px] overflow-scroll rounded-2xl p-4 flex flex-col justify-between"
       >
         <textarea
+          value={data}
           rows={2}
+          onChange={(e) => {
+            setSaveVisible(true);
+            setData(e.target.value);
+          }}
           className="flex-1 resize-none bg-transparent text-base leading-6 outline-none border-none"
         ></textarea>
 
@@ -34,7 +43,7 @@ function Note({ note, deleteNote }) {
             </div>
           </div>
           <div className="flex gap-1">
-            {isStarred ? (
+            {/* {isStarred ? (
               <button
                 onClick={() => {
                   setIsStarred(!isStarred);
@@ -50,6 +59,16 @@ function Note({ note, deleteNote }) {
               >
                 <AiOutlineStar size={25} />
               </button>
+            )} */}
+            {saveVisible && (
+              <button
+                onClick={() => {
+                  setSaveVisible(false);
+                  updateNote(data, note?.id);
+                }}
+              >
+                <VscSave size={22} />
+              </button>
             )}
 
             <button
@@ -57,7 +76,7 @@ function Note({ note, deleteNote }) {
                 deleteNote(note?.id);
               }}
             >
-              <MdDelete size={25} />
+              <AiOutlineDelete size={25} />
             </button>
           </div>
         </div>

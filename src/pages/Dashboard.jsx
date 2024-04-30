@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import NoteView from "../components/NoteView";
 import Sidebar from "../components/Sidebar";
 
 function Dashboard() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(
+    JSON.parse(localStorage.getItem("notes-app")) || []
+  );
 
   const addNote = (color) => {
     let newNote = [...notes];
@@ -25,6 +27,20 @@ function Dashboard() {
     tempNotes.splice(index, 1);
     setNotes(tempNotes);
   };
+  const updateNote = (text, id) => {
+    console.log("hiiii", text);
+    const tempNotes = [...notes];
+
+    const index = tempNotes.findIndex((item) => item.id === id);
+    if (index < 0) return;
+
+    tempNotes[index].text = text;
+    setNotes(tempNotes);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("notes-app", JSON.stringify(notes));
+  }, [notes]);
 
   return (
     <div className="flex">
@@ -32,7 +48,11 @@ function Dashboard() {
         <Sidebar addNote={addNote} />
       </div>
       <div className="ml-36 overflow-y-auto">
-        <NoteView notes={notes} deleteNote={deleteNote} />
+        <NoteView
+          notes={notes}
+          updateNote={updateNote}
+          deleteNote={deleteNote}
+        />
       </div>
     </div>
   );

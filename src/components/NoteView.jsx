@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note";
 
-function NoteView({ notes, deleteNote }) {
+function NoteView({ notes, deleteNote, updateNote }) {
   console.log(notes);
 
   return (
@@ -17,7 +17,9 @@ function NoteView({ notes, deleteNote }) {
 
       <div className="mt-6 grid grid-cols-4 gap-3">
         {notes?.length > 0 ? (
-          notes.map((item) => <Note note={item} deleteNote={deleteNote} />)
+          notes.map((item) => (
+            <Note updateNote={updateNote} note={item} deleteNote={deleteNote} />
+          ))
         ) : (
           <p className="text-red-500 font-semibold text-xl">No Notes Found</p>
         )}
