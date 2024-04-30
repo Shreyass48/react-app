@@ -12,7 +12,7 @@ function NoteView({ notes, deleteNote, updateNote }) {
         className="p-1 mt-5 border border-gray-100 rounded-md w-96"
       />
       <div className="mt-10">
-        <p className="text-3xl font-semibold">Notes</p>
+        <p className="text-3xl font-semibold">Daily Tasks</p>
       </div>
 
       <div className="mt-6 grid grid-cols-4 gap-3">

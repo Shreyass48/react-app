@@ -1,12 +1,9 @@
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
 import { VscSave } from "react-icons/vsc";
 import { useState } from "react";
 
 function Note({ note, deleteNote, updateNote }) {
-  const [isStarred, setIsStarred] = useState(false);
   const [data, setData] = useState(note?.text || "");
   const [saveVisible, setSaveVisible] = useState(false);
   const bgColor = note?.color;
