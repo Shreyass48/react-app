@@ -12,7 +12,7 @@ function Note({ note, deleteNote, updateNote }) {
     <>
       <div
         style={{ backgroundColor: bgColor }}
-        className="w-64 h-[270px] overflow-scroll rounded-2xl p-4 flex flex-col justify-between"
+        className="w-64 h-[270px] overflow-hidden rounded-2xl p-4 flex flex-col justify-between"
       >
         <textarea
           value={data}
@@ -21,7 +21,8 @@ function Note({ note, deleteNote, updateNote }) {
             setSaveVisible(true);
             setData(e.target.value);
           }}
-          className="flex-1 resize-none bg-transparent text-base leading-6 outline-none border-none"
+          style={{ scrollbarWidth: "thin" }}
+          className="flex-1 resize-none overflow-y-scroll bg-transparent text-base leading-6 outline-none border-none"
         ></textarea>
 
         <div className="flex items-end justify-between mt-2">
