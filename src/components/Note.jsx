@@ -21,7 +21,10 @@ function Note({ note, deleteNote, updateNote }) {
             setSaveVisible(true);
             setData(e.target.value);
           }}
-          style={{ scrollbarWidth: "thin" }}
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: "transparent transparent",
+          }}
           className="flex-1 resize-none overflow-y-scroll bg-transparent text-base leading-6 outline-none border-none"
         ></textarea>
 
